@@ -1,61 +1,78 @@
 # FDD — Falsifiability-Driven Development
 
-**Version**: 1.0
+**Version**: 1.1
 **Origin**: José "El Arkitekt0" Espasa (zDk) — derived from Karl Popper's falsifiability principle
-**Status**: Validated across brAIngram (101/101 tests) and SHDD (121/121 tests)
+**Status**: Validated across brAIngram (101/101), SHDD (291/291), FACADD (47 findings)
 **Market**: NO equivalent exists — original methodology
 
 ## What Is FDD?
 
 FDD is a development methodology based on Karl Popper's principle: **a claim is only scientifically valid if it can be proven WRONG**. Every feature, fix, or assertion must be tested by actively trying to BREAK it before it can be considered correct.
 
-Unlike TDD (which tests expected behavior) or SHDD (which attacks security), FDD focuses on **epistemological validation** — proving that what we believe about our code is TRUE by failing to prove it FALSE.
-
 ## Triple Spec: TDD + SHDD + FDD = Zero-Errors-Team
 
 | Methodology | Focus | Question |
 |------------|-------|----------|
 | **TDD** | Expected behavior | "Does the code do what I intended?" |
-| **FDD** | Epistemological validation | "Is my belief about correctness FALSIFIABLE and SURVIVING falsification?" |
+| **FDD** | Epistemological validation | "Can I prove this WRONG?" |
 | **SHDD** | Security | "Can an adversary break this?" |
 
-## FDD Protocol
+## v1.1 — What's New
 
-1. **Formulate hypothesis**: "This code does X correctly"
-2. **Design falsification test**: Actively try to prove "This code does NOT do X correctly"
-3. **Execute falsification**: Run the test attempting to break the code
-4. **Evaluate**: If falsification FAILS (code survives) → hypothesis holds
-5. **Iterate**: Minimum 3x with different attack vectors
-6. **Confirm**: Hypothesis validated by falsifiability
+- **20 Falsification Attack Vectors** (up from 10) — organized by category
+- **Standardized Hypothesis Template** — with Zod schema validation variant
+- **Domain-Specific Examples** — schema, security, concurrency, performance
+- **Vector Selection Matrix** — which vectors for which component types
+- **FDD Validation Loops** — standardized 3+ loop pattern with seeds
+- **SDD Integration** — formal verify phase integration
 
-## Falsification Attack Vectors
+## Attack Vector Catalog
 
-| Vector | Question |
-|--------|----------|
-| Boundary | What happens at min/max/zero values? |
-| Concurrency | What happens with 1000 simultaneous requests? |
-| Adversarial | What does a malicious actor send? |
-| Missing | What if required input is absent? |
-| Corrupted | What if data is malformed/NaN/Inf? |
-| Cross-tenant | Can user A access user B's data? |
-| Timing | Can timing attacks reveal secrets? |
-| Resource | What if memory/CPU/disk is exhausted? |
-| Replay | Can old requests be replayed? |
-| Overflow | What if counts exceed MaxInt? |
+| # | Vector | Category |
+|---|--------|----------|
+| 1 | Boundary | Input |
+| 2 | Concurrency | Runtime |
+| 3 | Adversarial | Security |
+| 4 | Missing | Input |
+| 5 | Corrupted | Input |
+| 6 | Cross-tenant | Security |
+| 7 | Timing | Security |
+| 8 | Resource | Runtime |
+| 9 | Replay | Security |
+| 10 | Overflow | Input |
+| 11 | Injection | Security |
+| 12 | Serialization | Security |
+| 13 | State | Runtime |
+| 14 | Order | Runtime |
+| 15 | Encoding | Input |
+| 16 | Permission | Security |
+| 17 | Dependency | Runtime |
+| 18 | Idempotency | Runtime |
+| 19 | Leakage | Security |
+| 20 | Regression | Quality |
 
-## Integration
+## Quick Start
 
-FDD integrates into SDD at the **verify** phase:
+```bash
+# Clone
+git clone https://github.com/zdknet-0rgon/fdd-falsifiability-driven.git
 
+# Use in your project
+# 1. Read SKILL.md for the full methodology
+# 2. Select vectors from the catalog
+# 3. Write falsification tests
+# 4. Run 3+ loops with different seeds
+# 5. Verify 0% variability
 ```
-spec → design → tasks → apply → VERIFY (FDD) → archive
-```
 
-## References
+## Repos
 
-- Karl Popper — *The Logic of Scientific Discovery* (1959)
-- SHDD — github.com/zdknet-0rgon/shdd-security-hacking
-- FACADD — github.com/zdknet-0rgon/facadd
+| Framework | Repo |
+|-----------|------|
+| **FDD** | https://github.com/zdknet-0rgon/fdd-falsifiability-driven |
+| **SHDD** | https://github.com/zdknet-0rgon/shdd-security-hacking |
+| **FACADD** | https://github.com/zdknet-0rgon/facadd |
+| **Trident** | https://github.com/zdknet-0rgon/trident-specs |
 
 ## License
 
