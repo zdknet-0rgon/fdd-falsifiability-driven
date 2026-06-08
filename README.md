@@ -1,7 +1,7 @@
 # FDD — Falsifiability-Driven Development
 
 **Version**: 1.1
-**Origin**: José "El Arkitekt0" Espasa (zDk) — derived from Karl Popper's falsifiability principle
+**Origin**: José Espasa (zDk) "El Arkitekt0" — derived from Karl Popper's falsifiability principle
 **Status**: Validated across brAIngram (101/101), SHDD (291/291), FACADD (47 findings)
 **Market**: NO equivalent exists — original methodology
 
